@@ -1,5 +1,5 @@
 <template>
-  <v-row>
+  <!-- <v-row>
     <v-col class="text-center">
       <img
         src="/v.png"
@@ -15,5 +15,24 @@
         </footer>
       </blockquote>
     </v-col>
-  </v-row>
+  </v-row> -->
+  <nuxt-content :document="page" />
 </template>
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+  async asyncData({ $content }) {
+    const page = await $content('example').fetch()
+    console.log(page)
+    return {
+      page,
+    }
+  },
+  data(){
+    return {
+      
+    }
+  }
+})
+</script>
